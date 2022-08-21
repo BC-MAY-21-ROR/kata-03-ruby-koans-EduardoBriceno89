@@ -15,6 +15,19 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+
+  triangulo = [a,b,c]
+
+  if triangulo.min <= 0
+    raise TriangleError
+  end
+
+  triangulo.sort!
+
+  if triangulo[0] + triangulo[1] <= triangulo[2]
+    raise TriangleError
+  end
+
   if a == b && a == c
     return :equilateral
   elsif (a != b) && (a != c) && (b != c)
@@ -26,4 +39,5 @@ end
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError < StandardError
+ 
 end
