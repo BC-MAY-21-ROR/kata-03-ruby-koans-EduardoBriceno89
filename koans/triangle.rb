@@ -16,28 +16,23 @@
 def triangle(a, b, c)
   # WRITE THIS CODE
 
-  triangulo = [a,b,c]
+  triangulo = [a, b, c]
 
-  if triangulo.min <= 0
-    raise TriangleError
-  end
+  raise TriangleError if triangulo.min <= 0
 
   triangulo.sort!
 
-  if triangulo[0] + triangulo[1] <= triangulo[2]
-    raise TriangleError
-  end
+  raise TriangleError if triangulo[0] + triangulo[1] <= triangulo[2]
 
   if a == b && a == c
-    return :equilateral
+    :equilateral
   elsif (a != b) && (a != c) && (b != c)
-    return :scalene
+    :scalene
   else
-    return :isosceles
+    :isosceles
   end
 end
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError < StandardError
- 
 end
