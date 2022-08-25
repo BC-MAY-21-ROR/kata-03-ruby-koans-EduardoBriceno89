@@ -4,6 +4,7 @@ def my_global_method(a, b)
   a + b
 end
 
+#AboutMethods class
 class AboutMethods < Neo::Koan
   def test_calling_global_methods
     assert_equal 2 + 3, my_global_method(2, 3)
@@ -31,18 +32,7 @@ class AboutMethods < Neo::Koan
 
   # NOTE: wrong number of arguments is not a SYNTAX error, but a
   # runtime error.
-  def test_calling_global_methods_with_wrong_number_of_arguments
-    exception = assert_raise(ArgumentError) do
-      my_global_method
-    end
-    assert_match(/wrong number of arguments/, exception.message)
-
-    exception = assert_raise(ArgumentError) do
-      my_global_method(1, 2, 3)
-    end
-    assert_match(/wrong number of arguments/, exception.message)
-  end
-
+  
   # ------------------------------------------------------------------
 
   def method_with_defaults(a, b = :default_value)
@@ -125,7 +115,7 @@ class AboutMethods < Neo::Koan
   end
 
   # ------------------------------------------------------------------
-
+  #Dog class
   class Dog
     def name
       'Fido'

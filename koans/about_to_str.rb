@@ -1,6 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
+#AboutToStr class
 class AboutToStr < Neo::Koan
+  #CanNotBeTreatedAsString class
   class CanNotBeTreatedAsString
     def to_s
       'non-string-like'
@@ -19,7 +21,7 @@ class AboutToStr < Neo::Koan
   end
 
   # ------------------------------------------------------------------
-
+  #CanBeTreatedAsString class
   class CanBeTreatedAsString
     def to_s
       'string-like'

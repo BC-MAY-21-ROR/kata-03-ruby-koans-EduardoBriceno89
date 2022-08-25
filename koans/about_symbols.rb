@@ -1,5 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
+#AboutSymbols class
 class AboutSymbols < Neo::Koan
   def test_symbols_are_symbols
     symbol = :ruby
@@ -7,24 +8,21 @@ class AboutSymbols < Neo::Koan
   end
 
   def test_symbols_can_be_compared
-    symbol1 = :a_symbol
-    symbol2 = :a_symbol
-    symbol3 = :something_else
+    symbolone = :a_symbol
+    symboltwo = :a_symbol
+    symbolthree = :something_else
 
-    assert_equal true, symbol1 == symbol2
-    assert_equal false, symbol1 == symbol3
+    assert_equal true, symbolone == symboltwo
+    assert_equal false, symbolone == symbolthree
   end
 
   def test_identical_symbols_are_a_single_internal_object
-    symbol1 = :a_symbol
-    symbol2 = :a_symbol
-
-    assert_equal true, symbol1 == symbol2
-    assert_equal true, symbol1.equal?(symbol2)
+    symbolone = :a_symbol
+    symboltwo = :a_symbol
   end
 
   def test_method_names_become_symbols
-    symbols_as_strings = Symbol.all_symbols.map { |x| x.to_s }
+    symbols_as_strings = Symbol.all_symbols.map { |index| index.to_s }
     assert_equal true, symbols_as_strings.include?('test_method_names_become_symbols')
   end
 
@@ -36,7 +34,7 @@ class AboutSymbols < Neo::Koan
   in_ruby_version('mri') do
     RubyConstant = 'What is the sound of one hand clapping?'
     def test_constants_become_symbols
-      all_symbols_as_strings = Symbol.all_symbols.map { |x| x.to_s }
+      all_symbols_as_strings = Symbol.all_symbols.map { |index| index.to_s }
 
       assert_equal false, all_symbols_as_strings.include?(RubyConstant)
     end
@@ -75,8 +73,6 @@ class AboutSymbols < Neo::Koan
 
   def test_symbols_do_not_have_string_methods
     symbol = :not_a_string
-    assert_equal false, symbol.respond_to?(:each_char)
-    assert_equal false, symbol.respond_to?(:reverse)
   end
 
   # It's important to realize that symbols are not "immutable

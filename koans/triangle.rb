@@ -13,10 +13,10 @@
 # and
 #   about_triangle_project_2.rb
 #
-def triangle(a, b, c)
+def triangle(sidea, sideb, sidec)
   # WRITE THIS CODE
 
-  triangulo = [a, b, c]
+  triangulo = [sidea, sideb, sidec]
 
   raise TriangleError if triangulo.min <= 0
 
@@ -24,9 +24,9 @@ def triangle(a, b, c)
 
   raise TriangleError if triangulo[0] + triangulo[1] <= triangulo[2]
 
-  if a == b && a == c
+  if sidea == sideb && sidea == sidec
     :equilateral
-  elsif (a != b) && (a != c) && (b != c)
+  elsif (sidea != sideb) && (sidea != sidec) && (sideb != sidec)
     :scalene
   else
     :isosceles

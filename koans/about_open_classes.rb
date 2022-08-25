@@ -1,6 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
+#AboutOpenClasses class
 class AboutOpenClasses < Neo::Koan
+  #Dog class
   class Dog
     def bark
       'WOOF'
@@ -28,7 +30,7 @@ class AboutOpenClasses < Neo::Koan
   end
 
   # ------------------------------------------------------------------
-
+  #::Integer class
   class ::Integer
     def answer_to_life_universe_and_everything?
       self == 42

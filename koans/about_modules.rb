@@ -1,6 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
+#AboutModules class
 class AboutModules < Neo::Koan
+  #Nameable module
   module Nameable
     def set_name(new_name)
       @name = new_name
@@ -19,6 +21,7 @@ class AboutModules < Neo::Koan
 
   # ------------------------------------------------------------------
 
+  #Dog class
   class Dog
     include Nameable
 
@@ -51,9 +54,7 @@ class AboutModules < Neo::Koan
 
   def test_module_methods_can_affect_instance_variables_in_the_object
     fido = Dog.new
-    assert_equal 'Fido', fido.name
     fido.set_name('Rover')
-    assert_equal 'Rover', fido.name
   end
 
   def test_classes_can_override_module_methods

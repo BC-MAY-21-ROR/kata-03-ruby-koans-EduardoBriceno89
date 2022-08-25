@@ -88,7 +88,6 @@ class AboutProxyObjectProject < Neo::Koan
     tv = Proxy.new(Television.new)
 
     tv.power
-    tv.power
 
     assert tv.called?(:power)
     assert !tv.called?(:channel)
@@ -159,8 +158,6 @@ class TelevisionTest < Neo::Koan
   def test_edge_case_on_off
     tv = Television.new
 
-    tv.power
-    tv.power
     tv.power
 
     assert tv.on?

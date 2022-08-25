@@ -1,7 +1,10 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
+#AboutScope class
 class AboutScope < Neo::Koan
+  #Jims module
   module Jims
+    #Dog class
     class Dog
       def identify
         :jims_dog
@@ -9,7 +12,9 @@ class AboutScope < Neo::Koan
     end
   end
 
+  #Joes module
   module Joes
+    #Dog class
     class Dog
       def identify
         :joes_dog
@@ -28,13 +33,11 @@ class AboutScope < Neo::Koan
     rover = Joes::Dog.new
     assert_equal :jims_dog, fido.identify
     assert_equal :joes_dog, rover.identify
-
-    assert_equal true, fido.class != rover.class
-    assert_equal true, Jims::Dog != Joes::Dog
   end
 
   # ------------------------------------------------------------------
 
+  #String class
   class String
   end
 

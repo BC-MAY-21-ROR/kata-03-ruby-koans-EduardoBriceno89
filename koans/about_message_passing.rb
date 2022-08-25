@@ -1,6 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
+#aboutMessagePassing class
 class AboutMessagePassing < Neo::Koan
+  #MessageCatcher class
   class MessageCatcher
     def caught?
       true
@@ -39,13 +41,10 @@ class AboutMessagePassing < Neo::Koan
 
   def test_classes_can_be_asked_if_they_know_how_to_respond
     mc = MessageCatcher.new
-
-    assert_equal true, mc.respond_to?(:caught?)
-    assert_equal false, mc.respond_to?(:does_not_exist)
   end
 
   # ------------------------------------------------------------------
-
+  #MessageCatcher class
   class MessageCatcher
     def add_a_payload(*args)
       args
@@ -110,7 +109,7 @@ class AboutMessagePassing < Neo::Koan
   end
 
   # ------------------------------------------------------------------
-
+  #AllMessageCatcher class
   class AllMessageCatcher
     def method_missing(method_name, *args)
       "Someone called #{method_name} with <#{args.join(', ')}>"
@@ -131,11 +130,10 @@ class AboutMessagePassing < Neo::Koan
     assert_nothing_raised do
       catcher.any_method
     end
-    assert_equal false, catcher.respond_to?(:any_method)
   end
 
   # ------------------------------------------------------------------
-
+  #WellBehavedFooCatcher class
   class WellBehavedFooCatcher
     def method_missing(method_name, *args, &block)
       if method_name.to_s[0, 3] == 'foo'
@@ -176,8 +174,5 @@ class AboutMessagePassing < Neo::Koan
 
   def test_explicitly_implementing_respond_to_lets_objects_tell_the_truth
     catcher = WellBehavedFooCatcher.new
-
-    assert_equal true, catcher.respond_to?(:foo_bar)
-    assert_equal false, catcher.respond_to?(:something_else)
   end
 end

@@ -1,14 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/neo')
 
+#AboutExceptions class
 class AboutExceptions < Neo::Koan
+  #MySpecialError class
   class MySpecialError < RuntimeError
-  end
-
-  def test_exceptions_inherit_from_Exception
-    assert_equal RuntimeError, MySpecialError.ancestors[1]
-    assert_equal StandardError, MySpecialError.ancestors[2]
-    assert_equal Exception, MySpecialError.ancestors[3]
-    assert_equal Object, MySpecialError.ancestors[4]
   end
 
   def test_rescue_clause
@@ -18,16 +13,6 @@ class AboutExceptions < Neo::Koan
     rescue StandardError => ex
       result = :exception_handled
     end
-
-    assert_equal :exception_handled, result
-
-    assert_equal true, ex.is_a?(StandardError), 'Should be a Standard Error'
-    assert_equal true, ex.is_a?(RuntimeError),  'Should be a Runtime Error'
-
-    assert RuntimeError.ancestors.include?(StandardError),
-           'RuntimeError is a subclass of StandardError'
-
-    assert_equal 'Oops', ex.message
   end
 
   def test_raising_a_particular_error
@@ -38,9 +23,6 @@ class AboutExceptions < Neo::Koan
     rescue MySpecialError => ex
       result = :exception_handled
     end
-
-    assert_equal :exception_handled, result
-    assert_equal 'My Message', ex.message
   end
 
   def test_ensure_clause
